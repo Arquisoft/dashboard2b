@@ -1,10 +1,28 @@
 <html>
+
 <head>
-<title>Hola</title>
+    <title>Hola</title>
 </head>
-<body>
-<h1>Dashboard0 skeleton</h1>
-<h2>Receiving messages for you:</h2>
-<div id="messages"></div>
+
+<body ng-app="dashboard">
+    <h1>Dashboard0 skeleton</h1>
+    <h2>Receiving messages for you:</h2>
+    <div id="messages"></div>
+    <div ng-controller="dash">
+        <p>The ID is {{greeting.id}}</p>
+        <p>The content is {{greeting.content}}</p>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    
+    <script>
+    angular.module('dashboard', [])
+        .controller('dash', function($scope) {
+            $scope.greeting = {
+                id: 'xxx',
+                content: 'Hello World!'
+            }
+        });
+    </script>
 </body>
+
 </html>

@@ -3,11 +3,12 @@
 [![codecov](https://codecov.io/gh/Arquisoft/dashboard2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/dashboard2b)
 
 
-# participants0
+# dashboard2b
 
 [![Join the chat at https://gitter.im/Arquisoft/participants0](https://badges.gitter.im/Arquisoft/participants0.svg)](https://gitter.im/Arquisoft/participants0?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Skeleton of participants module
+Este módulo ofrecerá una vista de estadísticas al personal del ayuntamiento y a los concejales y otras autoridades para que puedan observar en tiempo real la evolución del sistema de participaciones.
+
 
 # Authors
 

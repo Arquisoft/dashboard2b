@@ -2,6 +2,13 @@
 
 <head>
     <title>Hola</title>
+    <!-- <link rel="stylesheet" type="text/css" href=""> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+    <style type="text/css">
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none !important;
+    }
+    </style>
 </head>
 
 <body ng-app="es.uniovi.asw.dashboard">
@@ -13,16 +20,10 @@
         <p>The content is {{greeting.content}}</p>
     </div>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    
-    <script>
-    angular.module('es.uniovi.asw.dashboard', [])
-        .controller('dash', function($scope) {
-            $scope.greeting = {
-                id: 'xxx',
-                content: 'Hello World!'
-            }
-        });
-    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/AngularClass/angular-websocket/v2.0.0/dist/angular-websocket.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
+
+    <script type="text/javascript" src="./js/script.js"></script>
 </body>
 
 </html>

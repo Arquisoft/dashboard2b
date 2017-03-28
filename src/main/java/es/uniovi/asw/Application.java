@@ -1,6 +1,7 @@
 package es.uniovi.asw;
 
 
+import es.uniovi.asw.dashboard.SuggestionController;
 import es.uniovi.asw.dbmanagement.model.Suggestion;
 import es.uniovi.asw.util.Producer;
 import org.slf4j.Logger;
@@ -20,14 +21,14 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner demo(Producer producer) {
+    CommandLineRunner demo(Producer producer, SuggestionController controller) {
         return (args) -> {
             Suggestion s = producer.insertSuggestion(new Suggestion("Prueba1"));
 
             while (true) {
                 Thread.sleep(5000);
                 producer.simulateVotes(s.getId());
-
+                s = controller.getSuggestion(s.getId());
             }
         };
     }

@@ -3,8 +3,10 @@ package es.uniovi.asw.dbmanagement;
 import es.uniovi.asw.dbmanagement.model.Suggestion;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.ManagedBean;
 import java.util.List;
 
+@ManagedBean
 public class SuggestionDataImpl implements SuggestionData {
 
     @Autowired

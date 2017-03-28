@@ -1,4 +1,4 @@
-package dbmanagement.model;
+package es.uniovi.asw.dbmanagement.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ public class Suggestion implements Serializable {
     private Long id;
 
     private String title;
-    private int voteNumber;
+    private int numberOfVotes;
 
     Suggestion() {
     }
@@ -33,11 +33,15 @@ public class Suggestion implements Serializable {
         this.title = title;
     }
 
-    public int getVoteNumber() {
-        return voteNumber;
+    public int getNumberOfVotes() {
+        return numberOfVotes;
     }
 
-    public void setVoteNumber(int voteNumber) {
-        this.voteNumber = voteNumber;
+    public void setNumberOfVotes(int numberOfVotes) {
+        this.numberOfVotes = numberOfVotes;
+    }
+
+    public int vote() {
+        return ++numberOfVotes;
     }
 }

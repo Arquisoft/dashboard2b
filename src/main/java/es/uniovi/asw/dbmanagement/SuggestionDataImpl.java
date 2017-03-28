@@ -1,6 +1,6 @@
-package dbmanagement;
+package es.uniovi.asw.dbmanagement;
 
-import dbmanagement.model.Suggestion;
+import es.uniovi.asw.dbmanagement.model.Suggestion;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

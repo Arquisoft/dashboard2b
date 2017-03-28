@@ -1,6 +1,6 @@
-package dashboard;
+package es.uniovi.asw.dashboard;
 
-import dbmanagement.model.Suggestion;
+import es.uniovi.asw.dbmanagement.model.Suggestion;
 
 import java.util.List;
 

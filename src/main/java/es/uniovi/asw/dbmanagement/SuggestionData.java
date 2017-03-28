@@ -1,6 +1,6 @@
-package dbmanagement;
+package es.uniovi.asw.dbmanagement;
 
-import dbmanagement.model.Suggestion;
+import es.uniovi.asw.dbmanagement.model.Suggestion;
 
 import java.util.List;
 

@@ -11,7 +11,7 @@
     </style>
 </head>
 
-<body ng-app="dashboard">
+<body ng-app="es.uniovi.asw.dashboard">
     <h1>Dashboard0 skeleton</h1>
     <h2>Receiving messages for you:</h2>
     <div id="messages"></div>
@@ -24,36 +24,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
 
     <script type="text/javascript" src="./js/script.js"></script>
-<!--     <script>
-    angular.module('dashboard', ['ngWebSocket'])
-        .controller('dash', function($scope) {
-            $scope.greeting = {
-                id: 'xxx',
-                content: 'Hello World!'
-            }
-        }).
-        factory('MyData', MyData);
-
-        function MyData($websocket){
-        	// Open a WebSocket connection
-        	var dataStream = $websocket('ws://website.com/data');
-
-        	var collection = [];
-
-        	dataStream.onMessage(function(message) {
-        	  collection.push(JSON.parse(message.data));
-        	});
-
-        	var methods = {
-        	  collection: collection,
-        	  get: function() {
-        	    dataStream.send(JSON.stringify({ action: 'get' }));
-        	  }
-        	};
-
-        	return methods;
-        }
-    </script> -->
 </body>
 
 </html>

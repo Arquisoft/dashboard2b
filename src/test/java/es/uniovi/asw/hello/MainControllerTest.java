@@ -1,10 +1,11 @@
-package hello;
+package es.uniovi.asw.hello;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
 import java.net.URL;
 
+import es.uniovi.asw.Application;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

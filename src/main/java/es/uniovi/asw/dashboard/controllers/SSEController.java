@@ -1,4 +1,4 @@
-package es.uniovi.asw.hello;
+package es.uniovi.asw.dashboard.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by fercats on 3/30/17.
- */
 @RestController
 public class SSEController {
 

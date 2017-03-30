@@ -1,18 +1,14 @@
-package es.uniovi.asw.hello.listeners;
+package es.uniovi.asw.dashboard.listeners;
 
-import es.uniovi.asw.dbmanagement.model.Message;
-import es.uniovi.asw.hello.SSEController;
+import es.uniovi.asw.dashboard.controllers.SSEController;
 import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import javax.annotation.ManagedBean;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +24,6 @@ public class MessageListener {
     private final List<SseEmitter> emitters = new ArrayList<>();
 
     @KafkaListener(topics = "exampleTopic")
-    @RequestMapping(path = "/stream", method = RequestMethod.GET)
     public void listen(String data) {
 
         List<SseEmitter> sseEmitterListToRemove = new ArrayList<>();
@@ -43,7 +38,7 @@ public class MessageListener {
         });
         SSEController.emitters.removeAll(sseEmitterListToRemove);
 
-        logger.info("New message received: \"" + data + "\"");
+        logger.info("New message received: " + data);
     }
 
 

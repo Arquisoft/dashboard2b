@@ -1,4 +1,4 @@
-package es.uniovi.asw.hello.listeners;
+package es.uniovi.asw.dashboard.listeners;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

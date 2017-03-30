@@ -1,4 +1,4 @@
-package es.uniovi.asw.dashboard;
+package es.uniovi.asw.dashboard.controllers;
 
 import es.uniovi.asw.dbmanagement.model.Suggestion;
 

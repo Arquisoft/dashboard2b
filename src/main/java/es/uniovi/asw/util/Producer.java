@@ -1,5 +1,7 @@
 package es.uniovi.asw.util;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import es.uniovi.asw.Application;
 import es.uniovi.asw.dbmanagement.SuggestionRepository;
 import es.uniovi.asw.dbmanagement.model.Suggestion;
@@ -22,10 +24,12 @@ public class Producer {
 
     public Suggestion insertSuggestion(Suggestion s) {
         s = repository.save(s);
+        ObjectNode node = JsonNodeFactory.instance.objectNode(); // initializing
+        node.put("Created", ":D"); // building
         log.info(
                 "Saved new suggestion - id:" + s.getId() + ", title:" + s
                         .getTitle());
-        producer.send("exampleTopic", "Created:" + s.getId());
+        producer.send("exampleTopic", node.toString());
         return s;
     }
 

@@ -23,7 +23,7 @@ public class MessageListener {
     private static final Logger logger = Logger.getLogger(MessageListener.class);
     private final List<SseEmitter> emitters = new ArrayList<>();
 
-    @KafkaListener(topics = "exampleTopic")
+    @KafkaListener(topics = "suggestion")
     public void listen(String data) {
 
         List<SseEmitter> sseEmitterListToRemove = new ArrayList<>();

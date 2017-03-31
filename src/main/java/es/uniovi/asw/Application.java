@@ -11,24 +11,35 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class Application {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger log = LoggerFactory.getLogger(
+            Application.class);
+    private static final int NUMBER_OF_SUGGESTIONS = 99;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Bean
-    CommandLineRunner demo(ProducerDemo producerDemo, SuggestionController controller) {
+    CommandLineRunner demo(ProducerDemo producerDemo, SuggestionController
+            controller) {
         return (args) -> {
-            Suggestion s = producerDemo.insertSuggestion(new Suggestion("Prueba1"));
+            Thread.sleep(5000);
+            List<Suggestion> suggestions = new ArrayList<>();
+            for (int i = 0; i < NUMBER_OF_SUGGESTIONS; i++) {
+                suggestions.add(new Suggestion("Propuesta" + i));
+                Thread.sleep(3000);
+                producerDemo.insertSuggestion(suggestions.get(i));
 
-            while (true) {
-                Thread.sleep(5000);
-                producerDemo.simulateVotes(s.getId());
-                s = controller.getSuggestion(s.getId());
+                for (Suggestion s : suggestions) {
+                    Thread.sleep(2000);
+                    producerDemo.simulateVotes(s.getId());
+                }
             }
         };
     }

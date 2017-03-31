@@ -33,7 +33,7 @@ public class ProducerDemo {
         ObjectNode json = JsonNodeFactory.instance.objectNode();
         json.put("type", n.getType().ordinal());
         json.put("suggestionId",n.getSuggestionId());
-        producer.send("suggestion", json.toString());
+        producer.send("exampleTopic", json.toString());
         return s;
     }
 
@@ -49,6 +49,6 @@ public class ProducerDemo {
         ObjectNode json = JsonNodeFactory.instance.objectNode();
         json.put("type", n.getType().ordinal());
         json.put("suggestionId",n.getSuggestionId());
-        producer.send("suggestion", json.toString());
+        producer.send("exampleTopic", json.toString());
     }
 }

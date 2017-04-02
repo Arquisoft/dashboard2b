@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import es.uniovi.asw.dashboard.pojos.Notification;
+import es.uniovi.asw.dbmanagement.model.Suggestion;
 import es.uniovi.asw.dbmanagement.types.NotificationType;
+import es.uniovi.asw.util.ProducerDemo;
 
 public class NotificationTest {
 
@@ -24,4 +26,9 @@ public class NotificationTest {
 		
 	}
 
+	@Test
+	public void prueba() {
+		ProducerDemo demo = new ProducerDemo();
+		demo.insertSuggestion(new Suggestion("Suggestion prueba"));
+	}
 }

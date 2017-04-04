@@ -25,10 +25,5 @@ public class NotificationTest {
 		assertEquals(3, (long)notification2.getSuggestionId());
 		
 	}
-
-	@Test
-	public void prueba() {
-		ProducerDemo demo = new ProducerDemo();
-		demo.insertSuggestion(new Suggestion("Suggestion prueba"));
-	}
+	
 }

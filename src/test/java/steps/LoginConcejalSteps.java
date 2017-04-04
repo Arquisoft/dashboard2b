@@ -1,5 +1,6 @@
 package steps;
 
+import static org.junit.Assert.assertTrue;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 

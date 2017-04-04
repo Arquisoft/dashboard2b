@@ -6,8 +6,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="data in alcalde.suggestions">
-            <td ng-bind="data.title"></td>
+        <tr ng-repeat="data in suggestions track by $index">
+            <td>{{data.title}}</td>
             <td>{{data.numberOfVotes}}</td>
         </tr>
     </tbody>

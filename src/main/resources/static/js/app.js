@@ -15,8 +15,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('dashboard.alcalde', {
             url: '/alcalde',
             templateUrl: 'alcalde.html',
-            controller: 'AlcaldeController',
-            controllerAs: 'alcalde'
+            controller: 'AlcaldeController'
         })
         .state('dashboard.consejal', {
             url: '/consejal',
@@ -57,7 +56,7 @@ function dataService($http) {
     };
 
     function getSuggestion(id) {
-        return $http.get('/suggestion/')
+        return $http.get('/suggestion/' + id)
             .then(function(response){
                 return response.data;
             })
@@ -85,15 +84,14 @@ function LoginController($scope, $state) {
 
 app.controller('AlcaldeController', AlcaldeController);
 
-AlcaldeController.$inject = ['dataService'];
+AlcaldeController.$inject = ['$scope', 'dataService'];
 
-function AlcaldeController(dataService) {
-    var vm = this;
+function AlcaldeController($scope, dataService) {
     console.log('AlcaldeController');
 
     activate();
 
-    vm.suggestions = [];
+    $scope.suggestions = [];
 
     if (typeof(EventSource) !== "undefined") {
         var source = new EventSource('/streams');
@@ -101,14 +99,18 @@ function AlcaldeController(dataService) {
         source.onmessage = function(event) {
             var data = JSON.parse(event.data);
 
-            var pos = vm.suggestions.map(function(obj){return obj.id}).indexOf(data.suggestionId);
+            var pos = $scope.suggestions.map(function(obj){return obj.id}).indexOf(data.suggestionId);
             if (pos !== -1) {
-                console.log(vm.suggestions);
-                console.log(pos);
-                console.log(vm.suggestions[pos]);
-                vm.suggestions[pos].numberOfVotes += 1;
+                console.log($scope.suggestions[pos]);
+                $scope.suggestions[pos].numberOfVotes += 1;
+                $scope.$apply();
             } else {
+                console.log('Event data')
                 //TODO Request /suggestion/{id}
+                // dataService.getSuggestion()
+                //     .then(function(res){
+                //         console.log('res', res)
+                //     });
 //                vm.suggestions.push()
             }
         };
@@ -117,8 +119,8 @@ function AlcaldeController(dataService) {
     function activate(){
         dataService.getSuggestions()
             .then(function(response){
-                vm.suggestions = response;
-                console.log(vm.suggestions);
+                $scope.suggestions = response;
+                console.log($scope.suggestions);
             });
     }
 }

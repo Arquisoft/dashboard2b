@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.junit.Assert.assertTrue;
+
 public class LoginConcejalSteps {
 
 	@When("^un usuario de tipo concejal se loguea con usuario \"(.+)\" y password \"(.+)\"$")

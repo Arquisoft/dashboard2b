@@ -15,6 +15,8 @@ import cucumber.api.java.en.When;
 import static org.junit.Assert.*;
 
 
+import static org.junit.Assert.assertTrue;
+
 public class LoginAlcaldeSteps {
 
 	WebDriver driver; 
@@ -36,6 +38,7 @@ public class LoginAlcaldeSteps {
 	@When("^un usuario de tipo alcalde se loguea con usuario \"(.+)\" y password \"(.+)\"$")
 	public void i_login_with_name_and_password(String name, String password) throws Throwable {
 		SeleniumUtils.textoPresentePagina(driver, "Dashboard2b");
+
 	}
 
 	@Then("^el usuario recibe la pantalla inicial$")

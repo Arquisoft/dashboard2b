@@ -22,14 +22,17 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: 'LoginController'
         })
         .state('dashboard', {
-            //                abstract: true,
+            // abstract: true,
             url: "/dashboard",
             templateUrl: 'dashboard.html'
-                //                template: '<div ui-view autoscroll="false" />'
         })
-        .state('dashboard.welcome', {
-            url: '/main',
-            template: '<h1>Sup nigga</h1>'
+        .state('dashboard.alcalde', {
+            url: '/alcalde',
+            template: '<h1>Alcalde</h1>'
+        })
+        .state('dashboard.consejal', {
+            url: '/consejal',
+            template: '<h1>Consejal</h1>'
         })
     $urlRouterProvider.otherwise("/login");
     //          $locationProvider.html5Mode({ enabled: true, requireBase: true });
@@ -51,12 +54,14 @@ app.controller('LoginController', LoginController);
 LoginController.$inject = ['$scope', '$state'];
 
 function LoginController($scope, $state) {
-
     console.log('LoginController');
 
-    
-    $scope.login = function() {
-        console.log('Works');
-        $state.go('dashboard');
+    $scope.login = function(val) {
+        if ($scope.email === 'alcalde@gmail.com') {
+            $state.go('dashboard.alcalde');
+        } else {
+            $state.go('dashboard.consejal');
+        }
+
     }
 }

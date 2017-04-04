@@ -1,19 +1,5 @@
 var app = angular.module('app', ['ui.router']);
 
-// app.controller('dash', function($scope, $location) {
-//     // $scope.greeting = { id: 'xxx', content: 'Hello World!' }
-//     console.log('dashboar');    
-//     console.log($location.path());
-//     // if (typeof(EventSource) !== "undefined") {
-//     //     // Yes! Server-sent events support!
-//     //     var source = new EventSource('/streams');
-
-//     //     source.onmessage = function(event) {
-//     //         console.log(event);
-//     //     };
-//     // }
-// });
-
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
         .state('login', {
@@ -28,7 +14,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('dashboard.alcalde', {
             url: '/alcalde',
-            template: '<h1>Alcalde</h1>'
+            templateUrl: 'alcalde.html',
+            controller: 'AlcaldeController',
+            controllerAs: 'alcalde'
         })
         .state('dashboard.consejal', {
             url: '/consejal',
@@ -49,6 +37,36 @@ function navbar() {
     return directive;
 }
 
+app.factory('dataService', dataService);
+dataService.$inject = ['$http'];
+
+function dataService($http) {
+    return {
+        getSuggestions: getSuggestions,
+        getSuggestion: getSuggestion
+    };
+
+    function getSuggestions() {
+        return $http.get('/suggestion')
+            .then(function(response){
+                return response.data;
+            })
+            .catch(function(error){
+                return error;
+            });
+    };
+
+    function getSuggestion(id) {
+        return $http.get('/suggestion/')
+            .then(function(response){
+                return response.data;
+            })
+            .catch(function(error){
+                return error;
+            });
+    };
+}
+
 app.controller('LoginController', LoginController);
 
 LoginController.$inject = ['$scope', '$state'];
@@ -62,6 +80,45 @@ function LoginController($scope, $state) {
         } else {
             $state.go('dashboard.consejal');
         }
+    }
+}
 
+app.controller('AlcaldeController', AlcaldeController);
+
+AlcaldeController.$inject = ['dataService'];
+
+function AlcaldeController(dataService) {
+    var vm = this;
+    console.log('AlcaldeController');
+
+    activate();
+
+    vm.suggestions = [];
+
+    if (typeof(EventSource) !== "undefined") {
+        var source = new EventSource('/streams');
+
+        source.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+
+            var pos = vm.suggestions.map(function(obj){return obj.id}).indexOf(data.suggestionId);
+            if (pos !== -1) {
+                console.log(vm.suggestions);
+                console.log(pos);
+                console.log(vm.suggestions[pos]);
+                vm.suggestions[pos].numberOfVotes += 1;
+            } else {
+                //TODO Request /suggestion/{id}
+//                vm.suggestions.push()
+            }
+        };
+    }
+
+    function activate(){
+        dataService.getSuggestions()
+            .then(function(response){
+                vm.suggestions = response;
+                console.log(vm.suggestions);
+            });
     }
 }

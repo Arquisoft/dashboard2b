@@ -2,9 +2,9 @@ package steps;
 
 
 
-import org.openqa.selenium.By;
+
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import utils.SeleniumUtils;
@@ -12,11 +12,10 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.junit.Cucumber;
 import static org.junit.Assert.*;
 
-
-import static org.junit.Assert.assertTrue;
-
+@RunWith(Cucumber.class)
 public class LoginAlcaldeSteps {
 
 	WebDriver driver; 

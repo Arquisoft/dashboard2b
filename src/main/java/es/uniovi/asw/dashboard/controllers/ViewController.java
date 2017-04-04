@@ -30,4 +30,9 @@ public class ViewController {
     public String navbar(Model model) {
         return "navbar";
     }
+
+    @RequestMapping("/alcalde")
+    public String alcalde(Model model) {
+        return "alcalde";
+    }
 }

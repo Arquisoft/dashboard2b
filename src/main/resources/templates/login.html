@@ -1,7 +1,20 @@
 <h1 class="formTitle">Login</h1>
-<form>
-    <button ng-click="click()">:D </button>
-    <div>
-        <input type="" name=""/>
-    </div>
-</form>
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate"/>
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate"/>
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <button class="waves-effect waves-light btn" ng-click="login()">Login</button>
+        </div>
+    </form>
+</div>

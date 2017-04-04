@@ -26,6 +26,8 @@ public class ViewController {
         return "dashboard";
     }
 
-
-
+    @RequestMapping("/navbar")
+    public String navbar(Model model) {
+        return "navbar";
+    }
 }

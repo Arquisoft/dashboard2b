@@ -47,20 +47,20 @@ function dataService($http) {
 
     function getSuggestions() {
         return $http.get('/suggestion')
-            .then(function(response){
+            .then(function(response) {
                 return response.data;
             })
-            .catch(function(error){
+            .catch(function(error) {
                 return error;
             });
     };
 
     function getSuggestion(id) {
         return $http.get('/suggestion/' + id)
-            .then(function(response){
+            .then(function(response) {
                 return response.data;
             })
-            .catch(function(error){
+            .catch(function(error) {
                 return error;
             });
     };
@@ -99,26 +99,28 @@ function AlcaldeController($scope, dataService) {
         source.onmessage = function(event) {
             var data = JSON.parse(event.data);
 
-            var pos = $scope.suggestions.map(function(obj){return obj.id}).indexOf(data.suggestionId);
+            var pos = $scope.suggestions.map(function(obj) {
+                return obj.id }).indexOf(data.suggestionId);
             if (pos !== -1) {
+                //NOTE Agregando a una propuesta existente
                 console.log($scope.suggestions[pos]);
                 $scope.suggestions[pos].numberOfVotes += 1;
                 $scope.$apply();
             } else {
-                console.log('Event data')
-                //TODO Request /suggestion/{id}
-                // dataService.getSuggestion()
-                //     .then(function(res){
-                //         console.log('res', res)
-                //     });
-//                vm.suggestions.push()
+                //NOTE Agregando nueva propuesta
+                console.log('Event data', data);
+                dataService.getSuggestion(data.suggestionId)
+                    .then(function(res) {
+                        console.log('res', res);
+                        $scope.suggestions.push(res);
+                    });
             }
         };
     }
 
-    function activate(){
+    function activate() {
         dataService.getSuggestions()
-            .then(function(response){
+            .then(function(response) {
                 $scope.suggestions = response;
                 console.log($scope.suggestions);
             });

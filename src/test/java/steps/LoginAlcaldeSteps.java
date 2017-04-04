@@ -6,16 +6,22 @@ package steps;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-
+import org.springframework.boot.test.IntegrationTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.SpringApplicationContextLoader;
 import utils.SeleniumUtils;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.junit.Cucumber;
+import es.uniovi.asw.Application;
 import static org.junit.Assert.*;
 
-@RunWith(Cucumber.class)
+@ContextConfiguration(classes=Application.class, loader=SpringApplicationContextLoader.class)
+@IntegrationTest
+@WebAppConfiguration
 public class LoginAlcaldeSteps {
 
 	WebDriver driver; 

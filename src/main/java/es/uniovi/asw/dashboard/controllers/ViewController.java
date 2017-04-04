@@ -16,5 +16,16 @@ public class ViewController {
         return "index";
     }
 
+    @RequestMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @RequestMapping("/dashboard")
+    public String dashboard(Model model) {
+        return "dashboard";
+    }
+
+
 
 }

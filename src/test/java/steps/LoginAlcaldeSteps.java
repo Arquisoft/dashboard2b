@@ -1,8 +1,5 @@
 package steps;
 
-
-
-
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -10,6 +7,8 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationContextLoader;
+
+import utils.SauceUtils;
 import utils.SeleniumUtils;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -29,8 +28,8 @@ public class LoginAlcaldeSteps {
 	@Before
 	public void run()
 	{
-		driver = new HtmlUnitDriver();
-		driver.get("http://localhost:8090");		
+		driver = SauceUtils.getDriver();
+		driver.get("localhost:8090");				
 	}
 	
 	@After
@@ -41,13 +40,14 @@ public class LoginAlcaldeSteps {
 	}
 	
 	@When("^un usuario de tipo alcalde se loguea con usuario \"(.+)\" y password \"(.+)\"$")
-	public void i_login_with_name_and_password(String name, String password) throws Throwable {
-		SeleniumUtils.textoPresentePagina(driver, "Dashboard2b");
+	public void i_login_with_name_and_password_alcalde(String name, String password) throws Throwable {
+		//Thread.sleep(10000);
+		SeleniumUtils.textoPresentePagina(driver, "Login");
 
 	}
 
-	@Then("^el usuario recibe la pantalla inicial$")
-	public void i_receive_a_welcome_message() throws Throwable {
+	@Then("^el usuario logueado como alcalde recibe la pantalla inicial$")
+	public void i_receive_a_welcome_message_alcalde() throws Throwable {
 		assertTrue(true);
 	}
 }

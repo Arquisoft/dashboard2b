@@ -30,9 +30,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/alcalde',
             template: '<h1>Alcalde</h1>'
         })
-        .state('dashboard.consejal', {
-            url: '/consejal',
-            template: '<h1>Consejal</h1>'
+        .state('dashboard.concejal', {
+            url: '/concejal',
+            template: '<h1>Concejal</h1>'
         })
     $urlRouterProvider.otherwise("/login");
     //          $locationProvider.html5Mode({ enabled: true, requireBase: true });
@@ -60,7 +60,7 @@ function LoginController($scope, $state) {
         if ($scope.email === 'alcalde@gmail.com') {
             $state.go('dashboard.alcalde');
         } else {
-            $state.go('dashboard.consejal');
+            $state.go('dashboard.concejal');
         }
 
     }

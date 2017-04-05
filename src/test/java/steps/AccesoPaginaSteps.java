@@ -29,9 +29,9 @@ WebDriver driver;
 	}
 	
 	@When("^un usuario cualquiera accede a la aplicacion$")
-	public void i_login_with_name_and_password_alcalde(String name, String password) throws Throwable {
-		driver.get("http://localhost:8090");	
-		Thread.sleep(10000);
+	public void i_login_with_name_and_password_alcalde() throws Throwable {
+		//driver.get("http://localhost:8090");	
+		driver.navigate().to("http://localhost:8090/");
 		SeleniumUtils.textoPresentePagina(driver, "Login");
 
 	}

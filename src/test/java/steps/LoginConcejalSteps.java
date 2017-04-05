@@ -19,10 +19,10 @@ public class LoginConcejalSteps {
 	WebDriver driver;
 
 	@Before
-	public void run() throws InterruptedException {
+	public void run() {
 		driver = SauceUtils.getDriver();
-		driver.get("http://localhost:8090");
-		Thread.sleep(10000);
+		driver.navigate().to("http://localhost:8090/");
+		
 	}
 
 	@After

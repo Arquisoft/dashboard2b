@@ -29,7 +29,7 @@ public class LoginAlcaldeSteps {
 	public void run()
 	{
 		driver = SauceUtils.getDriver();
-		driver.get("localhost:8090");				
+		driver.get("http://localhost:8090");				
 	}
 	
 	@After

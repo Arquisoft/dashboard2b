@@ -18,10 +18,10 @@ public class SauceUtils {
 		String sauceUser;
 		String saucePassword;
 		
-		//sauceUser = System.getenv("SAUCE_USERNAME");
-		//saucePassword = System.getenv("SAUCE_ACCESS_KEY");
-		sauceUser = "dashboard2b";
-		saucePassword = "176d6582-28d1-41ab-8982-97fbce376c55";
+		sauceUser = System.getenv("SAUCE_USERNAME");
+		saucePassword = System.getenv("SAUCE_ACCESS_KEY");
+		//sauceUser = "dashboard2b";
+		//saucePassword = "176d6582-28d1-41ab-8982-97fbce376c55";
 		URL saucelabs = null;
 		
 		DesiredCapabilities capabilities;
@@ -34,12 +34,11 @@ public class SauceUtils {
 				System.out.println("URI Sauce mal formada");
 			}
 
-			capabilities = DesiredCapabilities.firefox();
-			capabilities.setCapability("platform", "OS X 10.11");
-			capabilities.setCapability("version", "45");
-			capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
-			capabilities.setCapability("name", "test");
-			driver = new RemoteWebDriver(saucelabs, capabilities);
+			DesiredCapabilities capabilities1 = DesiredCapabilities.firefox();
+			capabilities1.setCapability("platform", "Windows 10");
+			capabilities1.setCapability("version", "43.0");
+			capabilities1.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
+			driver = new RemoteWebDriver(saucelabs, capabilities1);
 		} else {
 			driver = new FirefoxDriver();
 		}

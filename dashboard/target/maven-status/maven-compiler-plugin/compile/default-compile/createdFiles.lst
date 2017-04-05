@@ -1,0 +1,17 @@
+es/uniovi/asw/dbmanagement/SuggestionDataImpl.class
+es/uniovi/asw/dashboard/controllers/SuggestionController.class
+es/uniovi/asw/dbmanagement/types/NotificationType.class
+es/uniovi/asw/dashboard/listeners/KafkaListenerFactory.class
+es/uniovi/asw/dashboard/pojos/Notification.class
+es/uniovi/asw/dashboard/controllers/SuggestionControllerImpl.class
+es/uniovi/asw/dbmanagement/SuggestionData.class
+es/uniovi/asw/dbmanagement/model/Suggestion.class
+es/uniovi/asw/dashboard/producers/KafkaProducer$1.class
+es/uniovi/asw/dashboard/producers/KafkaProducerFactory.class
+es/uniovi/asw/dashboard/producers/KafkaProducer.class
+es/uniovi/asw/dashboard/controllers/SSEController.class
+es/uniovi/asw/dashboard/listeners/MessageListener.class
+es/uniovi/asw/dbmanagement/SuggestionRepository.class
+es/uniovi/asw/Application.class
+es/uniovi/asw/util/ProducerDemo.class
+es/uniovi/asw/dashboard/controllers/ViewController.class

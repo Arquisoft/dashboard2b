@@ -11,6 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import es.uniovi.asw.dbManagement.ParticipantData;
 import es.uniovi.asw.dbManagement.model.Participant;
+import es.uniovi.asw.Application;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)

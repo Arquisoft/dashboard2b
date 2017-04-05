@@ -1,8 +1,0 @@
-steps/MainCucumberTest.class
-steps/LoginConcejalSteps.class
-uo/asw/dbmanagement/model/SuggestionTest.class
-utils/SeleniumUtils.class
-steps/MainControllerTest.class
-steps/LoginAlcaldeSteps.class
-utils/SauceUtils.class
-uo/asw/dashboard/pojos/NotificationTest.class

@@ -5,6 +5,7 @@ import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,7 +41,7 @@ public class SauceUtils {
 			capabilities1.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
 			driver = new RemoteWebDriver(saucelabs, capabilities1);
 		} else {
-			driver = new FirefoxDriver();
+			driver = new HtmlUnitDriver();
 		}
 		
 		return driver;

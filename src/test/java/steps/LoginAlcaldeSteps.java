@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 
+import utils.POLoginForm;
 import utils.SauceUtils;
 import utils.SeleniumUtils;
 import cucumber.api.java.After;
@@ -26,10 +27,11 @@ public class LoginAlcaldeSteps {
 	WebDriver driver; 
 	
 	@Before
-	public void run()
+	public void run() throws InterruptedException
 	{
 		driver = SauceUtils.getDriver();
-		driver.get("http://localhost:8090");				
+		driver.get("http://localhost:8090");		
+		Thread.sleep(10000);
 	}
 	
 	@After
@@ -41,13 +43,12 @@ public class LoginAlcaldeSteps {
 	
 	@When("^un usuario de tipo alcalde se loguea con usuario \"(.+)\" y password \"(.+)\"$")
 	public void i_login_with_name_and_password_alcalde(String name, String password) throws Throwable {
-		//Thread.sleep(10000);
-		SeleniumUtils.textoPresentePagina(driver, "Login");
+		new POLoginForm().rellenaFormulario(driver, name, password);
 
 	}
 
 	@Then("^el usuario logueado como alcalde recibe la pantalla inicial$")
 	public void i_receive_a_welcome_message_alcalde() throws Throwable {
-		assertTrue(true);
+		//SeleniumUtils.textoPresentePagina(driver, "Login");
 	}
 }

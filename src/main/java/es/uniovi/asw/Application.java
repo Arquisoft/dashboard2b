@@ -25,22 +25,22 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-//    @Bean
-//    CommandLineRunner demo(ProducerDemo producerDemo, SuggestionController
-//            controller) {
-//        return (args) -> {
-//            Thread.sleep(5000);
-//            List<Suggestion> suggestions = new ArrayList<>();
-//            for (int i = 0; i < NUMBER_OF_SUGGESTIONS; i++) {
-//                suggestions.add(new Suggestion("Propuesta" + i));
-//                Thread.sleep(3000);
-//                producerDemo.insertSuggestion(suggestions.get(i));
-//
-//                for (Suggestion s : suggestions) {
-//                    Thread.sleep(2000);
-//                    producerDemo.simulateVotes(s.getId());
-//                }
-//            }
-//        };
-//    }
+   @Bean
+   CommandLineRunner demo(ProducerDemo producerDemo, SuggestionController
+           controller) {
+       return (args) -> {
+           Thread.sleep(5000);
+           List<Suggestion> suggestions = new ArrayList<>();
+           for (int i = 0; i < NUMBER_OF_SUGGESTIONS; i++) {
+               suggestions.add(new Suggestion("Propuesta" + i));
+               Thread.sleep(1500);
+               producerDemo.insertSuggestion(suggestions.get(i));
+
+               for (Suggestion s : suggestions) {
+                   Thread.sleep(1000);
+                   producerDemo.simulateVotes(s.getId());
+               }
+           }
+       };
+   }
 }

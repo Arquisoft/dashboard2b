@@ -1,9 +1,5 @@
 package es.uniovi.asw;
 
-
-import es.uniovi.asw.dashboard.controllers.SuggestionController;
-import es.uniovi.asw.dbmanagement.model.Suggestion;
-import es.uniovi.asw.util.ProducerDemo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

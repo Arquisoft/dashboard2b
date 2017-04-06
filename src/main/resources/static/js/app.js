@@ -1,6 +1,6 @@
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'chart.js']);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, ChartJsProvider) {
     $stateProvider
         .state('login', {
             url: '/login',
@@ -23,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         })
     $urlRouterProvider.otherwise("/login");
     //          $locationProvider.html5Mode({ enabled: true, requireBase: true });
-    // ChartJsProvider.setOptions({ colors : [ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'] });
+    ChartJsProvider.setOptions({ colors : [ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'] });
 });
 
 

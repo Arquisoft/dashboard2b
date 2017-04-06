@@ -21,6 +21,7 @@ public class LoginConcejalSteps {
 	@Before
 	public void run() {
 		driver = SauceUtils.getDriver();
+		//driver = SauceUtils.getFirefoxPortableDriver();
 		driver.navigate().to("http://localhost:8090/");
 		
 	}
@@ -38,7 +39,7 @@ public class LoginConcejalSteps {
 
 	@Then("^el usuario logueado como concejal recibe la pantalla inicial$")
 	public void i_receive_a_welcome_message_concejal() throws Throwable {
-		SeleniumUtils.textoPresentePagina(driver, "Concejal");
+		SeleniumUtils.textoPresentePagina(driver, "Vista de concejal");
 	}
 	
 

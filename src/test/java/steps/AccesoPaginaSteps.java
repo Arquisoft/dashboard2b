@@ -18,6 +18,7 @@ WebDriver driver;
 	public void run()
 	{
 		driver = SauceUtils.getDriver();	
+		//driver = SauceUtils.getFirefoxPortableDriver();
 	}
 	
 	@After

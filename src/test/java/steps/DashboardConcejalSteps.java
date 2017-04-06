@@ -10,6 +10,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import utils.POLoginForm;
 import utils.SauceUtils;
+import utils.SeleniumUtils;
 
 public class DashboardConcejalSteps {
 
@@ -18,6 +19,7 @@ public class DashboardConcejalSteps {
 	@Before
 	public void run() {
 		driver = SauceUtils.getDriver();
+		//driver = SauceUtils.getFirefoxPortableDriver();
 		driver.navigate().to("http://localhost:8090/");
 
 	}
@@ -36,7 +38,7 @@ public class DashboardConcejalSteps {
 
 	@Then("^el concejal se encuentra con el dashboard para concejal$")
 	public void i_receive_dashboard_concejal() throws Throwable {
-		//Comprobar, de alguna manera, que se muestra la vista correspondiente al concejal
-		assertTrue(true);
+		SeleniumUtils.textoPresentePagina(driver, "Vista de concejal");
+		assertTrue(SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaConcejal", 5).get(0) != null);
 	}
 }

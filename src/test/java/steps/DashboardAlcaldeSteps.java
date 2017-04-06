@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import utils.POLoginForm;
 import utils.SauceUtils;
+import utils.SeleniumUtils;
 
 public class DashboardAlcaldeSteps {
 	WebDriver driver;
@@ -15,6 +16,7 @@ public class DashboardAlcaldeSteps {
 	@Before
 	public void run() {
 		driver = SauceUtils.getDriver();
+		//driver = SauceUtils.getFirefoxPortableDriver();
 		driver.navigate().to("http://localhost:8090/");
 
 	}
@@ -33,7 +35,7 @@ public class DashboardAlcaldeSteps {
 
 	@Then("^el alcalde se encuentra con el dashboard para alcalde$")
 	public void i_receive_dashboard_alcalde() throws Throwable {
-		//Comprobar, de alguna manera, que se muestra la vista correspondiente al alcalde
-		assertTrue(true);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaAlcalde", 5);
+		assertTrue(SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaAlcalde", 5).get(0) != null);
 	}
 }

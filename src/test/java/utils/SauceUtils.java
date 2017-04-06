@@ -1,9 +1,13 @@
 package utils;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -23,10 +27,8 @@ public class SauceUtils {
 		//sauceUser = "dashboard2b";
 		//saucePassword = "176d6582-28d1-41ab-8982-97fbce376c55";
 		URL saucelabs = null;
-		
-		DesiredCapabilities capabilities;
-		
 		WebDriver driver;
+		
 		if (sauceUser != null && saucePassword != null && !sauceUser.isEmpty() && !saucePassword.isEmpty()) {
 			try {
 				saucelabs = new URL("http://" + sauceUser + ":" + saucePassword + "@ondemand.saucelabs.com/wd/hub");
@@ -40,9 +42,19 @@ public class SauceUtils {
 			capabilities1.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
 			driver = new RemoteWebDriver(saucelabs, capabilities1);
 		} else {
-			driver = new HtmlUnitDriver();
+			driver = new FirefoxDriver();
 		}
 		
 		return driver;
+	}
+	
+	
+	static public WebDriver getFirefoxPortableDriver() {
+		 File pathToBinary = new File("src/files/firefox/FirefoxPortable.exe");
+		
+		 FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+		 FirefoxProfile firefoxProfile = new FirefoxProfile();
+		
+		 return  new FirefoxDriver(ffBinary, firefoxProfile);
 	}
 }

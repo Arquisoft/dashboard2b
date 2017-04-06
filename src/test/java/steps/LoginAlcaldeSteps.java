@@ -9,7 +9,7 @@ import org.springframework.boot.test.SpringApplicationContextLoader;
 
 import utils.POLoginForm;
 import utils.SauceUtils;
-
+import utils.SeleniumUtils;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
@@ -27,6 +27,7 @@ public class LoginAlcaldeSteps {
 	@Before
 	public void run() {
 		driver = SauceUtils.getDriver();
+		//driver = SauceUtils.getFirefoxPortableDriver();
 		driver.navigate().to("http://localhost:8090/");
 
 	}
@@ -45,6 +46,6 @@ public class LoginAlcaldeSteps {
 
 	@Then("^el usuario logueado como alcalde recibe la pantalla inicial$")
 	public void i_receive_a_welcome_message_alcalde() throws Throwable {
-		// SeleniumUtils.textoPresentePagina(driver, "Login");
+		SeleniumUtils.textoPresentePagina(driver, "Vista de alcalde");
 	}
 }

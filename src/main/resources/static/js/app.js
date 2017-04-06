@@ -19,12 +19,15 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('dashboard.concejal', {
             url: '/concejal',
-            template: '<h1>Concejal</h1>'
+            templateUrl: 'concejal.html'
         })
     $urlRouterProvider.otherwise("/login");
     //          $locationProvider.html5Mode({ enabled: true, requireBase: true });
+    // ChartJsProvider.setOptions({ colors : [ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'] });
 });
 
+
+//Directives
 app.directive('navbar', navbar);
 
 function navbar() {
@@ -36,7 +39,10 @@ function navbar() {
     return directive;
 }
 
+
+//Services
 app.factory('dataService', dataService);
+
 dataService.$inject = ['$http'];
 
 function dataService($http) {
@@ -66,6 +72,7 @@ function dataService($http) {
     };
 }
 
+//Controllers
 app.controller('LoginController', LoginController);
 
 LoginController.$inject = ['$scope', '$state'];
@@ -109,6 +116,7 @@ function AlcaldeController($scope, dataService) {
             } else {
                 //NOTE Agregando nueva propuesta
                 console.log('Event data', data);
+                Materialize.toast('Se ha creado una nueva propuesta!', 4000);
                 dataService.getSuggestion(data.suggestionId)
                     .then(function(res) {
                         console.log('res', res);
@@ -124,5 +132,15 @@ function AlcaldeController($scope, dataService) {
                 $scope.suggestions = response;
                 console.log($scope.suggestions);
             });
-    }
+    }   
+}
+
+
+app.controller("PolarAreaCtrl", PolarAreaCtrl);
+              
+PolarAreaCtrl.$inject = ['$scope'];
+
+function PolarAreaCtrl($scope) {
+  $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales", "Tele Sales", "Corporate Sales"];
+  $scope.data = [300, 500, 100, 40, 120];
 }

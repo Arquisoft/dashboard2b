@@ -35,4 +35,9 @@ public class ViewController {
     public String alcalde(Model model) {
         return "alcalde";
     }
+
+    @RequestMapping("/concejal")
+    public String concejal(Model model) {
+        return "concejal";
+    }
 }

@@ -15,7 +15,7 @@ public class DashboardAlcaldeSteps {
 
 	@Before
 	public void run() {
-		driver = SauceUtils.getDriver();
+		driver = SauceUtils.getDriver("DashboardAlcalde");
 		//driver = SauceUtils.getFirefoxPortableDriver();
 		driver.navigate().to("http://localhost:8090/");
 

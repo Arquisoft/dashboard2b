@@ -28,6 +28,7 @@ public class POLoginForm {
 
 		SeleniumUtils.EsperaCargaPagina(driver, "id",
 				"btnLogin", 0).get(0).click();
+		Thread.sleep(1000);
 
 	}
 }

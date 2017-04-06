@@ -18,7 +18,7 @@ public class SauceUtils {
 	@Value("${local.server.port}")
 	protected int port;
 	
-	static public WebDriver getDriver() {
+	static public WebDriver getDriver(String test) {
 		String sauceUser;
 		String saucePassword;
 		
@@ -40,6 +40,7 @@ public class SauceUtils {
 			capabilities1.setCapability("platform", "Windows 10");
 			capabilities1.setCapability("version", "43.0");
 			capabilities1.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
+			capabilities1.setCapability("name", test);
 			driver = new RemoteWebDriver(saucelabs, capabilities1);
 		} else {
 			driver = new FirefoxDriver();

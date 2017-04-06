@@ -46,6 +46,6 @@ public class LoginAlcaldeSteps {
 
 	@Then("^el usuario logueado como alcalde recibe la pantalla inicial$")
 	public void i_receive_a_welcome_message_alcalde() throws Throwable {
-		SeleniumUtils.textoPresentePagina(driver, "Vista de alcalde");
+		SeleniumUtils.textoPresentePagina(driver, "alcalde");
 	}
 }

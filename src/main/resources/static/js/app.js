@@ -99,6 +99,8 @@ function AlcaldeController($scope, dataService) {
     activate();
 
     $scope.suggestions = [];
+    $scope.suggestionslabels = [];
+    $scope.suggestionsVotes = [];
 
     if (typeof(EventSource) !== "undefined") {
         var source = new EventSource('/streams');
@@ -110,16 +112,13 @@ function AlcaldeController($scope, dataService) {
                 return obj.id }).indexOf(data.suggestionId);
             if (pos !== -1) {
                 //NOTE Agregando a una propuesta existente
-                console.log($scope.suggestions[pos]);
                 $scope.suggestions[pos].numberOfVotes += 1;
                 $scope.$apply();
             } else {
                 //NOTE Agregando nueva propuesta
-                console.log('Event data', data);
                 Materialize.toast('Se ha creado una nueva propuesta!', 4000);
                 dataService.getSuggestion(data.suggestionId)
                     .then(function(res) {
-                        console.log('res', res);
                         $scope.suggestions.push(res);
                     });
             }
@@ -130,7 +129,10 @@ function AlcaldeController($scope, dataService) {
         dataService.getSuggestions()
             .then(function(response) {
                 $scope.suggestions = response;
-                console.log($scope.suggestions);
+                response.forEach(function(obj){
+                    $scope.suggestionslabels.push(obj.title);
+                    $scope.suggestionsVotes.push(obj.numberOfVotes);
+                });
             });
     }   
 }
